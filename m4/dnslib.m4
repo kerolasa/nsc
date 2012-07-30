@@ -110,3 +110,4 @@ changecom(;)
 ; User-defined parts of configuration
 
 include(CFDIR/config)
+define(SVNSTATUS, `bin/check-cf-changes')

@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# M4 helper script to see if cf/ directory contents changed, and
+# should be committed.  The scrip is ran before make generates
+# zone files.  This in essence will force users to commit changes
+# before they become visible, resulting to a nice change log.
+#
+# Sami Kerola <kerolasa@iki.fi>
+
+#VERSIONING_CMD="true"		# use when you want to disable
+VERSIONING_CMD="git status -s"
+#VERSIONING_CMD="svn status"
+
+# Subversion example.
+NLINES=$(${VERSIONING_CMD} cf | wc -l)
+if [ ${NLINES} -ne 0 ]; then
+	printf "\n\nYou must commit cf changes before makeing zones.\n\n"
+	exit 1
+fi
+
+exit 0
+# EOF
