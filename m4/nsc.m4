@@ -150,6 +150,8 @@ define(REVBLOCK, `nsc_forloop(`i', $2, $3, `i'	`CNAME'	`i'.$1
 )D($1)
 ')
 
+include(m4/custom.m4)
+
 # Cleanup actions
 
 define(nsc_cleanup, `ifdef(`DISABLE_LOCALHOST',,`
