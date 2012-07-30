@@ -55,6 +55,12 @@ divert(0)dnl
 
 DDEPS=m4/nsc.m4 m4/dnslib.m4 cf/config
 
-all: VERSDIR/.version
+
+all:
+	@SVNSTATUS
+	if [ cf/domains -nt named.conf ]; then make nsconfig ; fi
+	make VERSDIR/.version
+	bin/check-zones
+
 m4wrap(`nsc_cleanup')
 divert(-1)
