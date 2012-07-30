@@ -10,7 +10,7 @@ DOMAINS=cf/domains
 if [ ! -f $DOMAINS ] ; then
 	echo "Domain list file missing."
 	exit 1
-	fi
+fi
 
 mkdir -p zone bak hash ver
 $M4 m4/mkconf.m4 $DOMAINS >named.conf
