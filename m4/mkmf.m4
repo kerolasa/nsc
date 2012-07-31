@@ -62,5 +62,8 @@ all:
 	make VERSDIR/.version
 	bin/check-zones
 
+nsconfig:
+	bin/nsconfig
+
 m4wrap(`nsc_cleanup')
 divert(-1)
