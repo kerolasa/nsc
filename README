@@ -351,6 +351,15 @@ HOURS(n)		Convert hours to seconds
 MINUTES(n)		Convert minutes to seconds
 DAYS(n)			Convert days to seconds
 
+If you have a lot of named.conf configuration you may want to include
+such with following macro in cf/domains file.
+
+CONFIG(`include "custom.conf";
+')
+
+The include will allow you to write custom.conf file using Bind
+configuration format without any modifications.
+
 
 5. Makefile targets
 ~~~~~~~~~~~~~~~~~~~
@@ -465,6 +474,8 @@ However, there is a couple of things you need to care about:
 
   o  Don't use commas, quotes nor parentheses in your record names.
 
+  o  Installation specific macros should be wrote to cf/custom.m4 file.
+
 
 9. Other utilities
 ~~~~~~~~~~~~~~~~~~
@@ -478,3 +489,11 @@ chkdel		A simple Perl script for checking of domain delegations --
 		it checks all PRIMARY and SECONDARY records in cf/domains
 		against NS records. Requires the Net::DNS module and also
 		some tweaking of parameters at the top of the script.
+
+check-cf-changes  A wrapper script to force cf/ directory version
+		controlling. This script may need to be modified to fit
+		your installation.
+
+check-zones	A wrapper script using named-checkzone that is ran to
+		generated zones at time when make runs. Script tries
+		catch zone syntax errors.
