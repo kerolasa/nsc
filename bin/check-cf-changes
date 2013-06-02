@@ -14,7 +14,7 @@ VERSIONING_CMD="git status -s"
 # Subversion example.
 NLINES=$(${VERSIONING_CMD} cf | wc -l)
 if [ ${NLINES} -ne 0 ]; then
-	printf "\n\nYou must commit cf changes before makeing zones.\n\n"
+	printf "$0: you must commit cf changes before makeing zones\n"
 	exit 1
 fi
 

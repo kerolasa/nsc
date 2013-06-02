@@ -4,11 +4,14 @@
 
 set -e
 
-M4=$(which gm4) || M4=$(which m4) || ( echo "Unable to find M4!" ; exit 1 )
+M4=$(which gm4 2>/dev/null) ||
+M4=$(which m4 2>/dev/null) ||
+( echo "$0: unable to find M4!" ; exit 1 )
+
 DOMAINS=cf/domains
 
 if [ ! -f $DOMAINS ] ; then
-	echo "Domain list file missing."
+	echo "$0: domain list file missing"
 	exit 1
 fi
 

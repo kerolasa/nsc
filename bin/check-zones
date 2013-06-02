@@ -12,7 +12,7 @@ for I in $(find zone -type f -mtime 0); do
 	J=$(head -20 ${I} | awk '$2 ~ /SOA/ {print $1}') &&
 	named-checkzone ${J} ${I} >/dev/null 2>&1
 	if [ ${?} -ne 0 ]; then
-		echo "Failure, exiting without changes!"
+		echo "$0: failure, exiting without changes!"
 		echo "See with following command to see what is wrong:"
 		echo "  $(type -P named-checkzone) ${J} ${I}"
 		echo "then fix issue and remake zones."
