@@ -14,7 +14,7 @@
 a.root-servers.net.	518400	IN	A	198.41.0.4
 b.root-servers.net.	518400	IN	A	192.228.79.201
 c.root-servers.net.	518400	IN	A	192.33.4.12
-d.root-servers.net.	518400	IN	A	128.8.10.90
+d.root-servers.net.	518400	IN	A	199.7.91.13
 e.root-servers.net.	518400	IN	A	192.203.230.10
 f.root-servers.net.	518400	IN	A	192.5.5.241
 g.root-servers.net.	518400	IN	A	192.112.36.4
@@ -26,3 +26,10 @@ l.root-servers.net.	518400	IN	A	199.7.83.42
 m.root-servers.net.	518400	IN	A	202.12.27.33
 a.root-servers.net.	518400	IN	AAAA	2001:503:ba3e::2:30
 d.root-servers.net.	518400	IN	AAAA	2001:500:2d::d
+f.root-servers.net.	518400	IN	AAAA	2001:500:2f::f
+h.root-servers.net.	518400	IN	AAAA	2001:500:1::803f:235
+i.root-servers.net.	518400	IN	AAAA	2001:7fe::53
+j.root-servers.net.	518400	IN	AAAA	2001:503:c27::2:30
+k.root-servers.net.	518400	IN	AAAA	2001:7fd::1
+l.root-servers.net.	518400	IN	AAAA	2001:500:3::42
+m.root-servers.net.	518400	IN	AAAA	2001:dc3::35
