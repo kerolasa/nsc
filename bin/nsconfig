@@ -4,7 +4,7 @@
 
 set -e
 
-M4=`which gm4` || M4=`which m4` || ( echo "Unable to find M4!" ; exit 1 )
+M4=$(which gm4) || M4=$(which m4) || ( echo "Unable to find M4!" ; exit 1 )
 DOMAINS=cf/domains
 
 if [ ! -f $DOMAINS ] ; then
