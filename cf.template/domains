@@ -1,0 +1,40 @@
+ROOTHINT()
+
+; The localhost. and it's reverse address.
+PRIMARY(localhost)
+REVERSE(127.0.0, localhost)
+
+; Blackhole zones recommended by RFC 6303
+BLACKHOLE(REV(0))			; IPv4 reserved net
+BLACKHOLE(REV(10))
+BLACKHOLE(REV(127))			; IPv4 loopback net
+BLACKHOLE(REV(169.254))			; IPv4 link-local
+nsc_forloop(`i', 16, 31, `BLACKHOLE(REV(172.i))')
+BLACKHOLE(REV(192.0.2))			; IPv4 test
+BLACKHOLE(REV(192.168))
+BLACKHOLE(REV(198.51.100))		; IPv4 test
+BLACKHOLE(REV(203.0.113))		; IPv4 test
+BLACKHOLE(REV(255.255.255.255))		; IPv4 broadcast
+BLACKHOLE(REV(::1/128))			; IPv6 loopback
+BLACKHOLE(REV(::0/128))			; IPv6 unspecified
+BLACKHOLE(REV(fd00::/8))		; IPv6 locally assigned
+BLACKHOLE(REV(fe80::/12))		; IPv6 link-local
+BLACKHOLE(REV(fe90::/12))
+BLACKHOLE(REV(fea0::/12))
+BLACKHOLE(REV(feb0::/12))
+BLACKHOLE(REV(2001:0db8::/32))		; IPv6 example prefix
+
+; RFC 2606 - Reserved Top Level DNS Names
+BLACKHOLE(example)
+BLACKHOLE(example.com)
+BLACKHOLE(example.net)
+BLACKHOLE(example.org)
+BLACKHOLE(invalid)
+BLACKHOLE(test)
+
+; RFC 5771 - IANA Guidelines for IPv4 Multicast Address Assignments
+REVERSE(239, localhost)
+
+; Your domain definitions begin below this line.
+
+; EOF

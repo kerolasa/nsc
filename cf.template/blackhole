@@ -1,0 +1,9 @@
+define(`DISABLE_LOCALHOST', 1)
+define(`MAINTNAME', `nobody.invalid.')
+define(`REFRESH', 3600)
+define(`RETRY', 1200)
+define(`EXPIRE', 604800)
+define(`MINTTL', 10800)
+
+SOA(@)
+NS(NSNAME)
