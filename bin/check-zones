@@ -5,11 +5,14 @@
 #
 # Sami Kerola
 
-PATH='/bin:/usr/bin:/data/dns/bin:/data/dns/sbin'
+PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin'
 export PATH
 
 for I in $(find zone -type f -mtime 0); do
-	J=$(head -20 ${I} | awk '$2 ~ /SOA/ {print $1}') &&
+	J=$(head -20 ${I} | awk '$2 ~ /SOA/ {print $1}')
+	if [ "x$J" = "x@" ]; then
+		J="invalid."
+	fi
 	named-checkzone ${J} ${I} >/dev/null 2>&1
 	if [ ${?} -ne 0 ]; then
 		echo "$0: failure, exiting without changes!"
