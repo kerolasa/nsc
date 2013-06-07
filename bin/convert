@@ -48,6 +48,8 @@ foreach $r (@zone) {
 			$sub{$n} = 1;
 			$subd{$n} .= "NS(" . fix($r->nsdname) . ")\n";
 		}
+	} elsif ($type eq "SRV") {
+		print "SRV(" . srv_two($r->name) . ", " . $r->priority . ", " . $r->weight . ", " . $r->port . ", " . fix($r->target) . ")\n";
 	} else {
 		print "; FIXME: ", $r->string, "\n";
 	}
@@ -86,4 +88,12 @@ sub fix {
 	if ($n eq $domain) { return "@"; }
 	elsif ($n =~ /^(.*)\.$domain$/) { return $1; }
 	else { return "$n."; }
+}
+
+sub srv_two {
+	my $foo = shift;
+	my ($service, $proto) = split('\.', $foo);
+	$service =~ s/^_//;
+	$proto =~ s/^_//;
+	return $service . ", " . $proto;
 }
