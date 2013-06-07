@@ -34,10 +34,12 @@ define(nsc_abs_name, `ifelse(CURRENT_NAME, translit(CURRENT_NAME,.,:), CURRENT_N
 
 # SOA record
 
+ifdef('HIDDEN_MASTER', `', `define(`HIDDEN_MASTER', `NSNAME')')
+
 define(nsc_SOA, `
 ifelse(CURRENT_DOMAIN,@,`',$ORIGIN CURRENT_DOMAIN)
 $TTL	MINTTL
-nsc_emit_name	`SOA'	nsc_corr_dot(NSNAME) MAINTNAME (
+nsc_emit_name	`SOA'	nsc_corr_dot(HIDDEN_MASTER) MAINTNAME (
 		VERSION REFRESH RETRY EXPIRE MINTTL )')
 define(SOA, `ifdef(`CURRENT_DOMAIN',`ifdef(`REVERSE_MODE',,`nsc_fatal_error(`SOA record defined twice')')')dnl
 define(`CURRENT_DOMAIN',ifelse($1,@,@,$1.))dnl
